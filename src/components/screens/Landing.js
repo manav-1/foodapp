@@ -1,4 +1,5 @@
 import "../styles/landing.css";
+import "../styles/landing-responsive.css";
 import React from "react";
 
 export default function Landing() {
@@ -50,18 +51,6 @@ export default function Landing() {
               aliqua amet ea magna. Dolor adipisicing nisi reprehenderit
               pariatur officia pariatur reprehenderit dolore. <br />
               <br />
-              Pariatur labore esse nulla esse ex amet. Eu sunt esse do duis
-              nulla quis eiusmod et dolore ipsum consequat. Occaecat nostrud
-              minim est reprehenderit. Aliquip aliqua ipsum sint sunt mollit
-              labore culpa non deserunt sint. Non ad cillum adipisicing aute
-              anim occaecat occaecat mollit.
-              <br />
-              <br />
-              Pariatur labore esse nulla esse ex amet. Eu sunt esse do duis
-              nulla quis eiusmod et dolore ipsum consequat. Occaecat nostrud
-              minim est reprehenderit. Aliquip aliqua ipsum sint sunt mollit
-              labore culpa non deserunt sint. Non ad cillum adipisicing aute
-              anim occaecat occaecat mollit.
             </p>
           </div>
         </div>
@@ -159,8 +148,8 @@ export default function Landing() {
       </section>
       <section id="contact">
         <h1> Lets Talk About Us</h1>
-        <div class="people">
-          <div class="person">
+        <div className="people">
+          <div className="person">
             <img
               className="person-img"
               src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
@@ -195,7 +184,7 @@ export default function Landing() {
               </a>
             </div>
           </div>
-          <div class="person">
+          <div className="person">
             <img
               className="person-img"
               src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
@@ -230,7 +219,7 @@ export default function Landing() {
               </a>
             </div>
           </div>
-          <div class="person">
+          <div className="person">
             <img
               className="person-img"
               src="https://images.unsplash.com/photo-1535931737580-a99567967ddc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
@@ -269,17 +258,17 @@ export default function Landing() {
         <div className="touch">
           <h1>Keep In Touch ? </h1>
           <div className="form">
-            <label for="username">Username</label>
+            <label htmlFor="username">Username</label>
             <input
-              class="form-styling"
+              className="form-styling"
               type="text"
               name="username"
               placeholder="Enter your Name"
             />
 
-            <label for="password">Email</label>
+            <label htmlFor="password">Email</label>
             <input
-              class="form-styling"
+              className="form-styling"
               type="text"
               name="email"
               placeholder="Enter your Email"

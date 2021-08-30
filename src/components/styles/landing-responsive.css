@@ -1,0 +1,76 @@
+@media only screen and (max-width: 768px) {
+  .navbar {
+    width: 100%;
+  }
+  .navbar ul {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
+  }
+  .navbar ul li a {
+    padding: 0.5rem 0.5rem;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  #about .about {
+    width: 100%;
+  }
+  #about h1 {
+    text-align: center;
+    font-size: 6vw;
+    color: #fff;
+  }
+  .header h1 {
+    font-weight: 700;
+    background: #fff;
+    color: rgb(14, 15, 19);
+    padding: 1rem 5vw;
+    font-size: 8vw;
+    border-radius: 0.5rem;
+  }
+  #meal {
+    height: auto;
+    /* background-repeat: no-repeat; */
+  }
+  .meal-div h1 {
+    font-size: 6vw;
+  }
+  .meal-content {
+    width: 100%;
+  }
+  .cards {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  #contact {
+    height: auto;
+  }
+  #contact h1 {
+    font-size: 6vw;
+  }
+  .card {
+    width: 90%;
+  }
+  .people {
+    flex-wrap: wrap;
+  }
+  .person {
+    width: 90%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  label {
+    text-align: center;
+  }
+  input {
+    display: block;
+    margin: auto;
+    width: 80%;
+  }
+  .touch h1 {
+    font-size: 2.5vw;
+  }
+}
