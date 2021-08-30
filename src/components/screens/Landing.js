@@ -18,7 +18,7 @@ export default function Landing() {
               <a href="#meal">Meal Reviews</a>
             </li>
             <li>
-              <a href="abc">Contact Us</a>
+              <a href="#contact">Contact Us</a>
             </li>
           </ul>
         </nav>
