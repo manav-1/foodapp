@@ -53,6 +53,7 @@
   }
   .card {
     width: 90%;
+    margin-bottom: 1.5rem;
   }
   .people {
     flex-wrap: wrap;
