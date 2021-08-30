@@ -93,6 +93,7 @@ body {
 }
 .card-image {
   width: 80%;
+  border-radius:0.8rem;
 }
 .meal-content {
   width: 60%;
