@@ -175,6 +175,7 @@ body {
   background: transparent;
   font-size: 1.1rem;
   border-bottom: 2px solid white;
+  color: #fff;
 }
 .contactfooter input::placeholder {
   color: #fff;
