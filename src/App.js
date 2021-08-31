@@ -1,6 +1,6 @@
-import LandingNavigation from "./components/navigation/LandingNavigation";
+import RootStackNavigation from "./components/navigation/RootStackNavigation";
 function App() {
-  return <LandingNavigation />;
+  return <RootStackNavigation />;
 }
 
 export default App;

@@ -2,9 +2,9 @@
 .form-container {
   position: relative;
   min-height: 100vh;
-  /* background-color: #e1e8ee; */
-  background-image: url("https://images.unsplash.com/photo-1505935428862-770b6f24f629?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=100");
+  background-image: url("https://images.unsplash.com/photo-1505935428862-770b6f24f629?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=100");
   background-position: center;
+  flex-direction: column;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,6 +13,19 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.form-container-restraunt {
+  position: relative;
+  min-height: 100vh;
+  background-image: url("https://images.unsplash.com/photo-1504400739660-22ebeb14f00a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80");
+  background-position: center;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Fira Sans", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 .form-structor {
   background-color: #222;
   border-radius: 1rem;
@@ -272,4 +285,14 @@
 .btn-back img {
   width: 5rem;
   height: 5rem;
+}
+.r-button {
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  color: #fff;
+  background-color: rgb(114, 142, 159, 0.7);
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border-radius: 0.3rem;
 }
