@@ -1,20 +1,30 @@
 @media only screen and (max-width: 768px) {
   .navbar {
+    background-image: linear-gradient(#000c, #000d);
+    height: 100vh;
+    position: fixed;
+    top: 0;
     width: 100%;
   }
   .navbar ul {
+    position: relative;
+    top: 20%;
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
     padding: 0;
     margin: 0;
   }
+  .navbar ul li {
+    margin: 1rem;
+  }
   .navbar ul li a {
     padding: 0.5rem 0.5rem;
-    margin: 0;
-    font-size: 0.9rem;
+    font-size: 2rem;
   }
+
   #about .about {
     width: 100%;
   }
@@ -63,15 +73,21 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
-  label {
-    text-align: center;
+  .person-img {
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
   }
-  input {
-    display: block;
+  .contactfooter {
+    background-image: linear-gradient(#fff3, #fff4);
     margin: auto;
-    width: 80%;
+    padding: 0.5rem 1rem 1rem;
+    width: 90%;
   }
-  .touch h1 {
-    font-size: 2.5vw;
+  .navbar {
+    display: none;
+  }
+  .navbar-toggle {
+    display: block;
   }
 }

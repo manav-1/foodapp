@@ -1,24 +1,50 @@
 import "../styles/landing.css";
+import menu from "../../assets/menu.png";
 import "../styles/landing-responsive.css";
 import React from "react";
+import { Dimensions } from "react-native";
 
 export default function Landing() {
+  function hideNav() {
+    if (Dimensions.get("window").width < 1000)
+      if (document.querySelector(".navbar").style.display === "block") {
+        var el = document.querySelector(".navbar");
+        el.style.display = "none";
+      }
+  }
   return (
     <div className="main-container">
       <div id="home" className="header">
+        <button
+          onClick={() => {
+            var el = document.querySelector(".navbar");
+            el.style.display = "block";
+          }}
+          className="navbar-toggle"
+        >
+          <img className="menuicon" src={menu} alt="menu"></img>
+        </button>
         <nav className="navbar">
           <ul>
             <li>
-              <a href="#home">Home</a>
+              <a onClick={hideNav} href="#home">
+                Home
+              </a>
             </li>
             <li>
-              <a href="#about">About Us</a>
+              <a onClick={hideNav} href="#about">
+                About Us
+              </a>
             </li>
             <li>
-              <a href="#meal">Meal Reviews</a>
+              <a onClick={hideNav} href="#meal">
+                Meal Reviews
+              </a>
             </li>
             <li>
-              <a href="#contact">Contact Us</a>
+              <a onClick={hideNav} href="#contact">
+                Contact Us
+              </a>
             </li>
           </ul>
         </nav>
@@ -147,7 +173,7 @@ export default function Landing() {
         </div>
       </section>
       <section id="contact">
-        <h1> Lets Talk About Us</h1>
+        <h1 className="contact-heading"> Lets Talk About Us</h1>
         <div className="people">
           <div className="person">
             <img
@@ -255,25 +281,31 @@ export default function Landing() {
             </div>
           </div>
         </div>
-        <div className="touch">
-          <h1>Keep In Touch ? </h1>
-          <div className="form">
-            <label htmlFor="username">Username</label>
-            <input
-              className="form-styling"
-              type="text"
-              name="username"
-              placeholder="Enter your Name"
-            />
-
-            <label htmlFor="password">Email</label>
-            <input
-              className="form-styling"
-              type="text"
-              name="email"
-              placeholder="Enter your Email"
-            />
+        <div className="contactfooter">
+          <h1>Keep In Touch</h1>
+          <div className="outer-form-container">
+            <div className="left-form-container">
+              <label htmlFor="name"> Name </label>
+              <label htmlFor="email"> Email </label>
+            </div>
+            <div className="right-form-container">
+              <input
+                type="text"
+                className="form-control"
+                id="name"
+                name="name"
+                placeholder="Enter your name"
+              ></input>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+              ></input>
+            </div>
           </div>
+          <button className="btn-submit">Submit</button>
         </div>
       </section>
     </div>
