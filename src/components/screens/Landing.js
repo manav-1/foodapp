@@ -4,7 +4,7 @@ import "../styles/landing-responsive.css";
 import React from "react";
 import { Dimensions } from "react-native";
 
-export default function Landing() {
+export default function Landing({ navigation }) {
   function hideNav() {
     if (Dimensions.get("window").width < 1000)
       if (document.querySelector(".navbar").style.display === "block") {
@@ -44,6 +44,17 @@ export default function Landing() {
             <li>
               <a onClick={hideNav} href="#contact">
                 Contact Us
+              </a>
+            </li>
+            <li>
+              {/* eslint-disable-next-line */}
+              <a
+                onClick={() => {
+                  hideNav();
+                  navigation.navigate("Login");
+                }}
+              >
+                Login
               </a>
             </li>
           </ul>

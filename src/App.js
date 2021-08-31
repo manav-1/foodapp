@@ -1,6 +1,6 @@
-import Landing from "./components/screens/Landing";
+import LandingNavigation from "./components/navigation/LandingNavigation";
 function App() {
-  return <Landing />;
+  return <LandingNavigation />;
 }
 
 export default App;
