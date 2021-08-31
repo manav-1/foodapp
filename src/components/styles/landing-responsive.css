@@ -41,6 +41,10 @@
     font-size: 8vw;
     border-radius: 0.5rem;
   }
+  .header {
+    background-image: linear-gradient(#0008, #0007),
+      url("https://i.ibb.co/JBnL1j8/small.jpg");
+  }
   #meal {
     height: auto;
     /* background-repeat: no-repeat; */
