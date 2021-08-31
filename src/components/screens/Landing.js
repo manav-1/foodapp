@@ -2,6 +2,7 @@ import "../styles/landing.css";
 import menu from "../../assets/menu.png";
 import "../styles/landing-responsive.css";
 import React from "react";
+import { Helmet } from "react-helmet";
 import { Dimensions } from "react-native";
 
 export default function Landing({ navigation }) {
@@ -14,6 +15,9 @@ export default function Landing({ navigation }) {
   }
   return (
     <div className="main-container">
+      <Helmet>
+        <title>Tomato Foods | Manav Arora</title>
+      </Helmet>
       <div id="home" className="header">
         <button
           onClick={() => {
