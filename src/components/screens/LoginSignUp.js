@@ -116,7 +116,7 @@ export default function Login({ navigation }) {
       </div>
       <button
         className="r-button"
-        onClick={() => navigation.navigate("Restraunt SignUp")}
+        onClick={() => navigation.push("Restraunt SignUp")}
       >
         SignUp/Login as Restraunt
       </button>

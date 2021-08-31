@@ -55,7 +55,7 @@ export default function Landing({ navigation }) {
               <a
                 onClick={() => {
                   hideNav();
-                  navigation.navigate("Login");
+                  navigation.push("Login");
                 }}
               >
                 Login

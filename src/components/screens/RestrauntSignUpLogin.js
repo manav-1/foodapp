@@ -113,7 +113,7 @@ export default function RestrauntSignUpLogin({ navigation }) {
           </div>
         </div>
       </div>
-      <button className="r-button" onClick={() => navigation.navigate("Login")}>
+      <button className="r-button" onClick={() => navigation.push("Login")}>
         SignUp/Login as Customer
       </button>
     </div>
