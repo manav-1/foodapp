@@ -45,10 +45,6 @@
     background-image: linear-gradient(#0008, #0007),
       url("https://i.ibb.co/L5k4SbL/image.png");
   }
-  #meal {
-    height: auto;
-    /* background-repeat: no-repeat; */
-  }
   .meal-div h1 {
     font-size: 6vw;
   }
@@ -58,9 +54,6 @@
   .cards {
     width: 100%;
     flex-wrap: wrap;
-  }
-  #contact {
-    height: auto;
   }
   #contact h1 {
     font-size: 6vw;
