@@ -3,7 +3,6 @@ import Landing from "../screens/Landing";
 import LoginSignUp from "../screens/LoginSignUp";
 import CustomerDashboard from "../screens/CustomerDashboard";
 import RestrauntDashboard from "../screens/RestrauntDashboard";
-import RestrauntSignUpLogin from "../screens/RestrauntSignUpLogin";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -20,11 +19,6 @@ export default function LandingNavigation() {
         <Stack.Screen
           name="Login"
           component={LoginSignUp}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Restraunt SignUp"
-          component={RestrauntSignUpLogin}
           options={{ headerShown: false }}
         />
         <Stack.Screen
