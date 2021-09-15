@@ -52,7 +52,7 @@ export default function Login({ navigation }) {
     console.log(signUpEmail, signUpPassword, signUpName);
     if (signUpEmail.trim() && signUpPassword.trim() && signUpName.trim()) {
       axios
-        .post("http://localhost:3001/api/signup", {
+        .post("https://whispering-waters-83199.herokuapp.com/api/signup", {
           type,
           email: signUpEmail,
           name: signUpName,
@@ -90,7 +90,7 @@ export default function Login({ navigation }) {
     console.log(loginEmail, loginPassword);
     if (loginEmail.trim() && loginPassword.trim()) {
       axios
-        .post("http://localhost:3001/api/login", {
+        .post("https://whispering-waters-83199.herokuapp.com/api/login", {
           type,
           email: loginEmail,
           password: loginPassword,
