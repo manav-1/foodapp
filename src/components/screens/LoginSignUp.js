@@ -4,10 +4,13 @@ import React, { useState, useEffect } from "react";
 import Snackbar from "@material-ui/core/Snackbar";
 import { Alert } from "@material-ui/lab";
 import { Helmet } from "react-helmet";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
 export default function Login({ navigation }) {
   const [open, setOpen] = useState(false);
+  const [hiddenSignUp, setHiddenSignUp] = useState(true);
+  const [hiddenlogin, setHiddenLogin] = useState(true);
   const [snackBarMessage, setSnackBarMessage] = useState("");
   const [snackBarType, setSnackBarType] = useState("error");
   const [type, setType] = useState("customer");
@@ -17,6 +20,19 @@ export default function Login({ navigation }) {
   const [signUpPassword, setSignUpPassword] = useState("");
   const [signUpEmail, setSignUpEmail] = useState("");
 
+  useEffect(() => {
+    (async () => {
+      const token = await AsyncStorage.getItem("Ztoken");
+      axios
+        .post("https://whispering-waters-83199.herokuapp.com//verifyUser", { token })
+        .then((response) => {
+          if (response.status === 200 && response.data) {
+            navigation.push("Dashboard");
+          }
+        })
+        .catch((error) => {});
+    })();
+  }, [navigation]);
   useEffect(() => {
     const loginBtn = document.getElementById("login");
     const signupBtn = document.getElementById("signup");
@@ -52,17 +68,21 @@ export default function Login({ navigation }) {
     console.log(signUpEmail, signUpPassword, signUpName);
     if (signUpEmail.trim() && signUpPassword.trim() && signUpName.trim()) {
       axios
-        .post("https://whispering-waters-83199.herokuapp.com/api/signup", {
+        .post("https://whispering-waters-83199.herokuapp.com//api/signup", {
           type,
           email: signUpEmail,
           name: signUpName,
           password: signUpPassword,
         })
-        .then((response) => {
+        .then(async (response) => {
+          console.log(response.data);
           if (response.status === 200 && response.data) {
+            await AsyncStorage.setItem("Ztoken", response.data.token);
+
             setOpen(true);
             setSnackBarMessage("Signed Up Successfully");
             setSnackBarType("success");
+            navigation.push("Dashboard");
           }
         })
         .catch((error) => {
@@ -90,17 +110,20 @@ export default function Login({ navigation }) {
     console.log(loginEmail, loginPassword);
     if (loginEmail.trim() && loginPassword.trim()) {
       axios
-        .post("https://whispering-waters-83199.herokuapp.com/api/login", {
+        .post("https://whispering-waters-83199.herokuapp.com//api/login", {
           type,
           email: loginEmail,
           password: loginPassword,
         })
-        .then((response) => {
+        .then(async (response) => {
+          console.log(response.data);
           if (response.status === 200 && response.data) {
             console.log(response.data);
+            await AsyncStorage.setItem("Ztoken", response.data.token);
             setOpen(true);
             setSnackBarMessage("Logged In Successfully");
             setSnackBarType("success");
+            navigation.push("Dashboard");
           }
         })
         .catch((error) => {
@@ -157,10 +180,19 @@ export default function Login({ navigation }) {
             <input
               value={signUpPassword}
               onInput={(e) => setSignUpPassword(e.target.value)}
-              type="password"
+              type={`${hiddenSignUp ? "password" : "text"}`}
               className="input"
               placeholder="Password"
             />
+
+            <input
+              type="checkbox"
+              style={{ margin: "1rem" }}
+              onChange={(e) => {
+                setHiddenSignUp(!e.target.checked);
+              }}
+            />
+            <label style={{ fontSize: "0.8rem" }}>Show Password</label>
           </div>
           <button onClick={handleSignUpClick} className="submit-btn">
             Sign up
@@ -183,10 +215,18 @@ export default function Login({ navigation }) {
               <input
                 value={loginPassword}
                 onInput={(e) => setLoginPassword(e.target.value)}
-                type="password"
+                type={`${hiddenlogin ? "password" : "text"}`}
                 className="input"
                 placeholder="Password"
               />
+              <input
+                type="checkbox"
+                style={{ margin: "1rem" }}
+                onChange={(e) => {
+                  setHiddenLogin(!e.target.checked);
+                }}
+              />
+              <label style={{ fontSize: "0.8rem" }}>Show Password</label>
             </div>
             <button onClick={handleLoginClick} className="submit-btn">
               Log in
@@ -202,7 +242,7 @@ export default function Login({ navigation }) {
       </button>
       <Snackbar
         open={open}
-        autoHideDuration={5000}
+        autoHideDuration={3000}
         onClose={() => {
           setOpen(false);
         }}
