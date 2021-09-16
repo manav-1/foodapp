@@ -1,0 +1,24 @@
+.main-bottomnav-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.component {
+  box-sizing: border-box;
+  width: 100%;
+  margin: auto;
+  padding: 2rem;
+  flex: 1;
+  background-color: rgba(255,255,255,0.6);
+}
+.bottom-nav {
+}
+.dash-bg {
+  background-image: url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=200");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

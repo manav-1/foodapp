@@ -24,51 +24,82 @@ export default function Login({ navigation }) {
     (async () => {
       const token = await AsyncStorage.getItem("Ztoken");
       axios
-        .post("https://whispering-waters-83199.herokuapp.com//verifyUser", { token })
+        .post("http://127.0.0.1:3001/verifyUser", { token })
         .then((response) => {
           if (response.status === 200 && response.data) {
-            navigation.push("Dashboard");
+            navigation.push("CustomerDashboard");
           }
         })
-        .catch((error) => {});
+        .catch((error) => {
+          console.log(error);
+          var resp = error.response;
+          if (resp.status === 406) {
+            setOpen(true);
+            setSnackBarMessage("Token Has Expired Please Login/SignUp Again");
+            setSnackBarType("error");
+          }
+        });
     })();
   }, [navigation]);
-  useEffect(() => {
-    const loginBtn = document.getElementById("login");
+  var loginBtnClick = (e) => {
     const signupBtn = document.getElementById("signup");
-
-    loginBtn.addEventListener("click", (e) => {
-      let parent = e.target.parentNode.parentNode;
-      Array.from(e.target.parentNode.parentNode.classList).find((element) => {
-        if (element !== "slide-up") {
-          parent.classList.add("slide-up");
-        } else {
-          signupBtn.parentNode.classList.add("slide-up");
-          parent.classList.remove("slide-up");
-        }
-        return null;
-      });
+    let parent = e.target.parentNode.parentNode;
+    Array.from(e.target.parentNode.parentNode.classList).find((element) => {
+      if (element !== "slide-up") {
+        parent.classList.add("slide-up");
+      } else {
+        signupBtn.parentNode.classList.add("slide-up");
+        parent.classList.remove("slide-up");
+      }
+      return null;
     });
+  };
 
-    signupBtn.addEventListener("click", (e) => {
-      let parent = e.target.parentNode;
-      Array.from(e.target.parentNode.classList).find((element) => {
-        if (element !== "slide-up") {
-          parent.classList.add("slide-up");
-        } else {
-          loginBtn.parentNode.parentNode.classList.add("slide-up");
-          parent.classList.remove("slide-up");
-        }
-        return null;
-      });
+  var signUpBtnClick = (e) => {
+    const loginBtn = document.getElementById("login");
+    let parent = e.target.parentNode;
+    Array.from(e.target.parentNode.classList).find((element) => {
+      if (element !== "slide-up") {
+        parent.classList.add("slide-up");
+      } else {
+        loginBtn.parentNode.parentNode.classList.add("slide-up");
+        parent.classList.remove("slide-up");
+      }
+      return null;
     });
-  });
-
+  };
   function handleSignUpClick() {
     console.log(signUpEmail, signUpPassword, signUpName);
+    if (signUpName.length < 2) {
+      setOpen(true);
+      setSnackBarMessage("Please Enter a Proper Name");
+      setSnackBarType("warning");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(signUpEmail)) {
+      setOpen(true);
+      setSnackBarMessage("Wrong Email, Enter a proper Email");
+      setSnackBarType("warning");
+      return;
+    }
+    if (
+      !(
+        /[a-z]/g.test(signUpPassword) &&
+        /[A-Z]/g.test(signUpPassword) &&
+        /[0-9]/g.test(signUpPassword) &&
+        signUpPassword.length > 8
+      )
+    ) {
+      setOpen(true);
+      setSnackBarMessage(
+        "Wrong Password, Lowercase, Uppercase, a Digit, >8 length required"
+      );
+      setSnackBarType("warning");
+      return;
+    }
     if (signUpEmail.trim() && signUpPassword.trim() && signUpName.trim()) {
       axios
-        .post("https://whispering-waters-83199.herokuapp.com//api/signup", {
+        .post("http://127.0.0.1:3001/api/signup", {
           type,
           email: signUpEmail,
           name: signUpName,
@@ -82,7 +113,7 @@ export default function Login({ navigation }) {
             setOpen(true);
             setSnackBarMessage("Signed Up Successfully");
             setSnackBarType("success");
-            navigation.push("Dashboard");
+            navigation.push("CustomerDashboard");
           }
         })
         .catch((error) => {
@@ -107,10 +138,32 @@ export default function Login({ navigation }) {
     }
   }
   function handleLoginClick() {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(loginEmail)) {
+      setOpen(true);
+      setSnackBarMessage("Wrong Email, Enter a proper Email");
+      setSnackBarType("warning");
+      return;
+    }
+    if (
+      !(
+        /[a-z]/g.test(loginPassword) &&
+        /[A-Z]/g.test(loginPassword) &&
+        /[0-9]/g.test(loginPassword) &&
+        loginPassword.length > 8
+      )
+    ) {
+      setOpen(true);
+      setSnackBarMessage(
+        "Wrong Password, Lowercase, Uppercase, a Digit, >8 length required"
+      );
+      setSnackBarType("warning");
+      return;
+    }
+
     console.log(loginEmail, loginPassword);
     if (loginEmail.trim() && loginPassword.trim()) {
       axios
-        .post("https://whispering-waters-83199.herokuapp.com//api/login", {
+        .post("http://127.0.0.1:3001/api/login", {
           type,
           email: loginEmail,
           password: loginPassword,
@@ -123,7 +176,7 @@ export default function Login({ navigation }) {
             setOpen(true);
             setSnackBarMessage("Logged In Successfully");
             setSnackBarType("success");
-            navigation.push("Dashboard");
+            navigation.push("CustomerDashboard");
           }
         })
         .catch((error) => {
@@ -158,7 +211,7 @@ export default function Login({ navigation }) {
       </Helmet>
       <div className="form-structor">
         <div className="signup">
-          <h2 className="form-title" id="signup">
+          <h2 onClick={signUpBtnClick} className="form-title" id="signup">
             <span>or</span>Sign up
             {`${type === "customer" ? "" : " as Restraunt"}`}
           </h2>
@@ -200,7 +253,7 @@ export default function Login({ navigation }) {
         </div>
         <div className="login slide-up">
           <div className="center">
-            <h2 className="form-title" id="login">
+            <h2 onClick={loginBtnClick} className="form-title" id="login">
               <span>or</span>Log in
               {`${type === "customer" ? "" : " as Restraunt"}`}
             </h2>

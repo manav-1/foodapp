@@ -1,8 +1,7 @@
 import React from "react";
 import Landing from "../screens/Landing";
 import LoginSignUp from "../screens/LoginSignUp";
-import CustomerDashboard from "../screens/CustomerDashboard";
-import RestrauntDashboard from "../screens/RestrauntDashboard";
+import DashboardBottomNav from "./DashBoardBottomNav";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -22,13 +21,8 @@ export default function LandingNavigation() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Customer Dashboard"
-          component={CustomerDashboard}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Restraunt Dashboard"
-          component={RestrauntDashboard}
+          name="CustomerDashboard"
+          component={DashboardBottomNav}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
