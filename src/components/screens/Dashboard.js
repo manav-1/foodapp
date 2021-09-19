@@ -1,4 +1,5 @@
 import React from "react";
+// eslint-disable-next-line
 import { Text } from "react-native";
 import DashNav from "../customComponents/DashNav";
 
