@@ -31,7 +31,6 @@ export default function Login({ navigation }) {
           }
         })
         .catch((error) => {
-          console.log(error);
           var resp = error.response;
           if (resp.status === 406) {
             setOpen(true);
@@ -240,12 +239,15 @@ export default function Login({ navigation }) {
 
             <input
               type="checkbox"
+              id="showPass"
               style={{ margin: "1rem" }}
               onChange={(e) => {
                 setHiddenSignUp(!e.target.checked);
               }}
             />
-            <label style={{ fontSize: "0.8rem" }}>Show Password</label>
+            <label htmlFor="showPass" style={{ fontSize: "0.8rem" }}>
+              Show Password
+            </label>
           </div>
           <button onClick={handleSignUpClick} className="submit-btn">
             Sign up
@@ -273,13 +275,16 @@ export default function Login({ navigation }) {
                 placeholder="Password"
               />
               <input
+                id="showPassLogin"
                 type="checkbox"
                 style={{ margin: "1rem" }}
                 onChange={(e) => {
                   setHiddenLogin(!e.target.checked);
                 }}
               />
-              <label style={{ fontSize: "0.8rem" }}>Show Password</label>
+              <label htmlFor="showPassLogin" style={{ fontSize: "0.8rem" }}>
+                Show Password
+              </label>
             </div>
             <button onClick={handleLoginClick} className="submit-btn">
               Log in
