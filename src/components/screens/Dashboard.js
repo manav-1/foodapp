@@ -5,6 +5,7 @@ import { Text } from "react-native";
 import Recipe from "../customComponents/Recipe";
 
 export default function App() {
+  // eslint-disable-next-line
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {}, []);
