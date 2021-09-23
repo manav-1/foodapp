@@ -1,0 +1,32 @@
+.container {
+  max-width: 25rem;
+  height: 25rem;
+  text-align: center;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: #f8f0df;
+  box-shadow: 5px 5px 10px 2px #11203188;
+  font-family: karla;
+  margin: 0.8rem 1rem;
+  /* overflow-y:scroll;
+  scrollbar-width: none; */
+}
+.title {
+  font-size: 1.8rem;
+}
+
+.recipeContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 90%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  justify-content: space-around;
+  border-top-right-radius:1rem;
+  border-top-left-radius:0.5rem;
+  box-shadow: 5px 5px 5px 5px #504b4b70;
+}
+.recipeText {
+  font-size: 1rem;
+}

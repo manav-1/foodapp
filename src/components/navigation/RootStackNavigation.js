@@ -2,13 +2,27 @@ import React from "react";
 import Landing from "../screens/Landing";
 import LoginSignUp from "../screens/LoginSignUp";
 import DashboardBottomNav from "./DashBoardBottomNav";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function LandingNavigation() {
-  const Stack = createStackNavigator();
   return (
-    <NavigationContainer>
+    <Router>
+      <Switch>
+        <Route path="/auth">
+          <LoginSignUp />
+        </Route>
+        <Route path="/dashboard">
+          <DashboardBottomNav />
+        </Route>
+        <Route path="/">
+          <Landing />
+        </Route>
+      </Switch>
+    </Router>
+  );
+}
+
+/* <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
           name="Landing"
@@ -26,6 +40,4 @@ export default function LandingNavigation() {
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
+    </NavigationContainer> */

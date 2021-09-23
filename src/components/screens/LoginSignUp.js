@@ -4,10 +4,12 @@ import React, { useState, useEffect } from "react";
 import Snackbar from "@material-ui/core/Snackbar";
 import { Alert } from "@material-ui/lab";
 import { Helmet } from "react-helmet";
+import { useHistory } from "react-router-dom";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
-export default function Login({ navigation }) {
+export default function Login() {
+  const history = useHistory();
   const [open, setOpen] = useState(false);
   const [hiddenSignUp, setHiddenSignUp] = useState(true);
   const [hiddenlogin, setHiddenLogin] = useState(true);
@@ -27,7 +29,7 @@ export default function Login({ navigation }) {
         .post("http://127.0.0.1:3001/verifyUser", { token })
         .then((response) => {
           if (response.status === 200 && response.data) {
-            navigation.push("CustomerDashboard");
+            history.push("/dashboard");
           }
         })
         .catch((error) => {
@@ -39,7 +41,7 @@ export default function Login({ navigation }) {
           }
         });
     })();
-  }, [navigation]);
+  }, [history]);
   var loginBtnClick = (e) => {
     const signupBtn = document.getElementById("signup");
     let parent = e.target.parentNode.parentNode;
@@ -112,7 +114,7 @@ export default function Login({ navigation }) {
             setOpen(true);
             setSnackBarMessage("Signed Up Successfully");
             setSnackBarType("success");
-            navigation.push("CustomerDashboard");
+            history.push("/dashboard");
           }
         })
         .catch((error) => {
@@ -175,7 +177,7 @@ export default function Login({ navigation }) {
             setOpen(true);
             setSnackBarMessage("Logged In Successfully");
             setSnackBarType("success");
-            navigation.push("CustomerDashboard");
+            history.push("/dashboard");
           }
         })
         .catch((error) => {
@@ -202,7 +204,7 @@ export default function Login({ navigation }) {
         type === "customer" ? "form-container" : "form-container-restraunt"
       }`}
     >
-      <button className="btn-back" onClick={() => navigation.goBack()}>
+      <button className="btn-back" onClick={() => history.push("/")}>
         <img src={back} alt="back"></img>
       </button>
       <Helmet>

@@ -1,12 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import styles from "../styles/recipe.module.css";
 // eslint-disable-next-line
 import { Text } from "react-native";
-import DashNav from "../customComponents/DashNav";
+import Recipe from "../customComponents/Recipe";
 
 export default function App() {
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {}, []);
+
   return (
-    <div>
-      <DashNav />
+    <div
+      style={{
+        fontFamily: "karla",
+        textAlign: "center",
+        fontSize: "1.5rem",
+        height: "100%",
+      }}
+    >
+      <h1> Some Random Recipes</h1>
+      <div className={styles.recipeContainer}>
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+        <Recipe />
+      </div>
     </div>
   );
 }

@@ -4,8 +4,10 @@ import "../styles/landing-responsive.css";
 import React from "react";
 import { Helmet } from "react-helmet";
 import { Dimensions } from "react-native";
+import { useHistory } from "react-router-dom";
 
 export default function Landing({ navigation }) {
+  const history = useHistory();
   function hideNav() {
     if (Dimensions.get("window").width < 1000)
       if (document.querySelector(".navbar").style.display === "block") {
@@ -55,7 +57,7 @@ export default function Landing({ navigation }) {
               <a
                 onClick={() => {
                   hideNav();
-                  navigation.push("Login");
+                  history.push("/auth");
                 }}
               >
                 Login
