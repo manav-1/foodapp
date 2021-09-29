@@ -1,46 +1,35 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/recipe.module.css";
-// eslint-disable-next-line
-import { Text } from "react-native";
 import Recipe from "../customComponents/Recipe";
+import axios from "axios";
 
 export default function App() {
-  // eslint-disable-next-line
   const [recipes, setRecipes] = useState([]);
-
-  useEffect(() => {}, []);
-
+  const APP_KEY = "7fff2f623c6e4b04b1b65abe18e15414";
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.spoonacular.com/recipes/random?number=10&apiKey=${APP_KEY}`
+      )
+      .then((response) => {
+        console.log(response.data);
+        setRecipes(response.data.recipes);
+      });
+  }, []);
+  console.log('recipes', recipes);
   return (
     <div
       style={{
         fontFamily: "karla",
         textAlign: "center",
-        fontSize: "1.5rem",
         height: "100%",
       }}
     >
-      <h1> Some Random Recipes</h1>
+      <h1 className={styles.recipeHeading}> Some Random Recipes</h1>
       <div className={styles.recipeContainer}>
-        <Recipe />
-        <Recipe />
-        <Recipe />
-        <Recipe />
-        <Recipe />
-        <Recipe />
-        <Recipe />
-        <Recipe />
-        <Recipe />
-        <Recipe />
-        <Recipe />
-        <Recipe />
-        <Recipe />
-        <Recipe />
-        <Recipe />
-        <Recipe />
-        <Recipe />
-        <Recipe />
-        <Recipe />
-        <Recipe />
+        {recipes.map((item, index) => (
+          <Recipe img={item.image} name={item.title} summary={item.summary} />
+        ))}
       </div>
     </div>
   );

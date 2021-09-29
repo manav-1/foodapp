@@ -1,36 +1,48 @@
 import React, { useState } from "react";
-// eslint-disable-next-line 
-import { Text } from "react-native";
+import "../styles/recipeSearch.css";
+import SearchIcon from "@mui/icons-material/Search";
+import axios from "axios";
+import styles from "../styles/recipe.module.css";
+import Recipe from "../customComponents/Recipe";
 
 export default function App() {
+  const APP_KEY = "7fff2f623c6e4b04b1b65abe18e15414";
+  axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
   const [recipeSearch, setRecipeSearch] = useState("");
+  const [recipes, setRecipes] = useState([]);
+  function handleButtonClick() {
+    console.log(recipeSearch);
+    axios
+      .get(
+        `https://api.spoonacular.com/recipes/complexSearch?query=${recipeSearch}&number=5&apiKey=${APP_KEY}`
+      )
+      .then((response) => {
+        console.log(response.data.results);
+        setRecipes(response.data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   return (
     <div>
-      <input
-        style={{
-          width: "80%",
-          padding: "0.8rem",
-          borderRadius: "0.5rem",
-        }}
-        value={recipeSearch}
-        onInput={(e) => setRecipeSearch(e.target.value)}
-        placeholder="Enter Recipes to be Searched Of"
-      />
-      <button
-        style={{
-          padding: "0.6rem 2rem",
-          fontSize: "1rem",
-          fontWeight: "bold",
-          fontFamily: "karla",
-          backgroundColor: "#112031",
-          border: "none",
-          color: "#fff",
-          margin: "0 1rem",
-        }}
-      >
-        Search
-      </button>
+      <div className="search-input-container">
+        <input
+          className="search-input"
+          value={recipeSearch}
+          onInput={(e) => setRecipeSearch(e.target.value)}
+          placeholder="Enter Recipes to be Searched Of"
+        />
+        <button onClick={handleButtonClick} className="search-button">
+          <SearchIcon />
+        </button>
+      </div>
+      <div className={styles.recipeContainer}>
+        {recipes.map((item, index) => (
+          <Recipe img={item.image} name={item.title} summary={item.summary} />
+        ))}
+      </div>
     </div>
   );
 }

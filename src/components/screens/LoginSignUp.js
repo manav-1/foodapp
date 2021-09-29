@@ -26,7 +26,7 @@ export default function Login() {
     (async () => {
       const token = await AsyncStorage.getItem("Ztoken");
       axios
-        .post("http://127.0.0.1:3001/verifyUser", { token })
+        .post("https://whispering-waters-83199.herokuapp.com/verifyUser", { token })
         .then((response) => {
           if (response.status === 200 && response.data) {
             history.push("/dashboard");
@@ -100,7 +100,7 @@ export default function Login() {
     }
     if (signUpEmail.trim() && signUpPassword.trim() && signUpName.trim()) {
       axios
-        .post("http://127.0.0.1:3001/api/signup", {
+        .post("https://whispering-waters-83199.herokuapp.com/api/signup", {
           type,
           email: signUpEmail,
           name: signUpName,
@@ -164,7 +164,7 @@ export default function Login() {
     console.log(loginEmail, loginPassword);
     if (loginEmail.trim() && loginPassword.trim()) {
       axios
-        .post("http://127.0.0.1:3001/api/login", {
+        .post("https://whispering-waters-83199.herokuapp.com/api/login", {
           type,
           email: loginEmail,
           password: loginPassword,

@@ -1,12 +1,16 @@
 import "../styles/landing.css";
 import menu from "../../assets/menu.png";
 import "../styles/landing-responsive.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Dimensions } from "react-native";
 import { useHistory } from "react-router-dom";
 
 export default function Landing({ navigation }) {
+  useEffect(() => {
+    document.querySelector("#home h1").classList.add("loaded");
+  }, []);
+
   const history = useHistory();
   function hideNav() {
     if (Dimensions.get("window").width < 1000)

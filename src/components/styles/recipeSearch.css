@@ -1,0 +1,29 @@
+.search-input-container {
+  width: 80vw;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.search-input {
+  flex: 1;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-family: karla;
+  text-transform: capitalize;
+  margin-right: 1rem;
+  outline: none;
+  border: none;
+  background:none;
+  border-bottom: 0.15rem solid white;
+}
+.search-button {
+  height: 3rem;
+  width: 3rem;
+  font-size: 2rem;
+  outline: none;
+  border: none;
+  background-color: #082032;
+  color: #fff;
+  border-radius: 0.5rem;
+}

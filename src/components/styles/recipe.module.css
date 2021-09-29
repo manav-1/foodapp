@@ -8,25 +8,40 @@
   box-shadow: 5px 5px 10px 2px #11203188;
   font-family: karla;
   margin: 0.8rem 1rem;
-  /* overflow-y:scroll;
-  scrollbar-width: none; */
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 .title {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
-
+.img {
+  width: 100%;
+}
 .recipeContainer {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  height: 90%;
+  height: 93%;
   overflow-y: scroll;
   scrollbar-width: none;
   justify-content: space-around;
-  border-top-right-radius:1rem;
-  border-top-left-radius:0.5rem;
+  border-radius: 0.3rem;
+  border-top-right-radius: 1rem;
   box-shadow: 5px 5px 5px 5px #504b4b70;
 }
 .recipeText {
   font-size: 1rem;
+}
+.recipeHeading {
+  font-size: 2.5rem;
+}
+@media screen and (max-width: 768px) {
+  .recipeHeading {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 300px) {
+  .recipeContainer {
+    height: 85%;
+  }
 }
